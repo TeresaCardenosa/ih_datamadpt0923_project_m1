@@ -1,115 +1,72 @@
-<p align="left"><img src="https://cdn-images-1.medium.com/max/184/1*2GDcaeYIx_bQAZLxWM4PsQ@2x.png"></p>
 
-# __ih_datamadpt0923_project_m1__
+# Madrid en bici 🚲
 
-Ironhack Madrid - Data Analytics Part Time - Sep 2023 - Project Module 1
+Find your nearest BiciMad or BiciPark to your location. 📌
 
-## **Data:**
+Specify whether you need to pick up (BiciMad) or drop off (BiciPark) a bike, and the garden or park in Madrid where you are as the point of origin.
 
-There are 2 main datasources:
-
-- **CSV Files.** The datasets contains information from the BiciMAD stations including their location (i.e.: latitude / longitude). You may find the `.csv` files in the __data__ folder.
-
-- **API REST.** We will use the API REST from the [Portal de datos abiertos del Ayuntamiento de Madrid](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/), where you can find the __Catálogo de datos__ with more than 70 datasets. The API endpoint is `https://datos.madrid.es/egob`. 
-
-> __IMPORTANT:__ These are the body corresponding to every dataset:
-
-- Alana: `/catalogo/209426-0-templos-catolicas.json`
-
-- Alberto: `/catalogo/209434-0-templos-otros.json`
-
-- Ana: `/catalogo/202162-0-instalaciones-accesibles-municip.json`
-
-- Andrew: `/catalogo/202180-0-instalaciones-accesibles-no-muni.json`
-
-- Carlos: `/catalogo/202311-0-colegios-publicos.json`
-
-- Elena: `/catalogo/203166-0-universidades-educacion.json`
-
-- Guille: `/catalogo/200215-0-instalaciones-deportivas.json`
-
-- John: `/catalogo/200304-0-centros-culturales.json`
-
-- Natalia: `/catalogo/201000-0-embajadas-consulados.json`
-
-- Rodrigo: `/catalogo/300356-0-monumentos-ciudad-madrid.json`
-
-- Sil: `/catalogo/208844-0-monumentos-edificios.json`
-
-- Silvia: `/catalogo/300614-0-centros-educativos.json`
-
-- Tere: `/catalogo/200761-0-parques-jardines.json`
-
-- Tomás: `/catalogo/212808-0-espacio-deporte.json`
+🔜 This way, you will find out which is the closest station and the distance of the journey.
 
 
+## Installation
 
----
+For the proper functioning of the project, you will need:
 
-## **Main Challenge:**
-
-You must create a Python App (**Data Pipeline**) that allow their potential users to find the nearest BiciMAD station to a set of places of interest using the methods included in the module `geo_calculations.py`. The output table should look similar to:
-
-| Place of interest | Type of place (*) | Place address | BiciMAD station | Station location |
-|---------|----------|-------|------------|----------|
-| Auditorio Carmen Laforet (Ciudad Lineal)   | Centros Culturales | Calle Jazmin, 46 | Legazpi | Calle Bolívar, 3 |
-| Centro Comunitario Casino de la Reina | Centros municipales de enseñanzas artísticas | Calle Casino, 3 | Chamartin | Calle Rodríguez Jaén, 40 |
-| ...     | ...            | ...        | ...      | ...        |
-> __(*)__ This correspond to the type of place assigned to you. 
+```bash
+  Python version 3.10.13
+```
 
 
-**Your project must meet the following requirements:**
+## Data 📚
 
-- It must be contained in a GitHub repository which includes a README file that explains the aim and content of your code. You may follow the structure suggested [here](https://github.com/potacho/data-project-template).
+The project works with 2 main datasources:
 
-- __It must create, at least, a `.csv` file including the requested table (i.e. Main Challenge).__ Alternatively, you may create an image, pdf, plot or any other output format that you may find convenient. You may also send your output by e-mail, upload it to a cloud repository, etc. 
-
-- It must provide, at least, two options for the final user to select when executing using `argparse`: **(1)** To get the table for every 'Place of interest' included in the dataset (or a set of them), **(2)** To get the table for a specific 'Place of interest' imputed by the user.
-
-
-**Additionally:**
-
-- You must prepare a 4 minutes presentation (ppt, canva, etc.) to explain your project (Instructors will provide further details about the content of the presentation).
-
-- The last slide of your presentation must include your candidate for the **'Ironhack Data Code Beauty Pageant'**. 
+- Parks and gardens of Madrid -> you can obtain this .JSON through the [Portal de Datos Abiertos del Ayuntamiento de Madrid](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/).
+- CSV Files. The files named *bicimad_stations* and *bicipark_stations* contain the necessary information for BiciMad/BiciPark stations.
 
 
----
+Also, in the **Data** folder, you will find two already created versions of CSV.
 
-### **Bonus 1:**
-
-You may include in your table the availability of bikes in each station.
-
----
-
-### **Bonus 2:**
-
-You may improve the usability of your app by using [FuzzyWuzzy](https://pypi.org/project/fuzzywuzzy/).
-
----
-
-### **Bonus 3:**
-
-Feel free to enrich your output data with any data you may find relevant (e.g.: wiki info for every place of interest) or connect to the [BiciMAD API](https://mobilitylabs.emtmadrid.es/) and update bikes availability realtime or find a better way to calculate distances...there's no limit!!!
-
---- 
+- *interes_bicimad* y *interes_bicipark* are the final results of applying the modules to obtain the dataframes that the project works with.
 
 
-## **Project Main Stack**
+## Demo
 
-- [Requests](https://requests.readthedocs.io/)
+The project, available to run from the main.py file, works with three Argparse arguments:
 
-- [Pandas](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
+1⃣ -r --> Choose between Bicimad or Bicipark.
+As a result of executing this argument, you will get the complete dataframe of parks and gardens with their corresponding nearest stations.
 
-- Module `geo_calculations.py`
+2⃣ -c --> Choose between Bicimad or Bicipark
 
-- [Argparse](https://docs.python.org/3.9/library/argparse.html)
+3⃣ -u --> Determine your location as the point of origin (in this case, which park or garden in Madrid you are in).
+
+When you execute these last two arguments, the project will return the nearest Bicimad/Bicipark station to the location, based on the category and location you have entered.
+
+![](https://github.com/ih_datamadpt0923_project_m1/Your_GIF_Name.gif)
 
 
 
+## Optimizations 💻
+
+Do you want to improve the code?
+Can you think of how to implement it?
+Would you like to connect it to the BiciMad API to see real-time bike availability?
+Or perhaps generate a map on Google that guides you on the way?
+
+Go ahead! 
+
+![force](http://url/to/img.png)
 
 
+## Feedback
 
+📲 If you have any feedback, feel free to contact me through LinkedIn.
+
+
+## Author
+
+- [@teresacardenosa](https://www.github.com/TeresaCardenosa)
 
 
 
