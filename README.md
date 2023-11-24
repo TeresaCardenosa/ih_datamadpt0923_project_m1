@@ -37,8 +37,9 @@ Also, in the **Data** folder, you will find two already created versions of CSV.
 
 - *interes_bicimad* y *interes_bicipark* are the final results of applying the modules to obtain the dataframes that the project works with.
 
-## Folder structure
+## Folder structure 📂
 
+```bash
 └── project
     ├── __trash__
     ├── .gitignore
@@ -57,6 +58,7 @@ Also, in the **Data** folder, you will find two already created versions of CSV.
         ├── bicimad_stations.csv
         ├── bicipark_stations.csv
         └── results (interes_bicimad/interes_bicipark)
+```
 
 ## Demo
 
