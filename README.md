@@ -15,7 +15,15 @@ For the proper functioning of the project, you will need:
 ```bash
   Python version 3.10.13
 ```
+Additionally, you must install the following libraries:
 
+```bash
+import argparse
+import pandas as pd
+from fuzzywuzzy import process
+from shapely.geometry import Point
+import geopandas as gpd
+```
 
 ## Data 📚
 
@@ -29,6 +37,26 @@ Also, in the **Data** folder, you will find two already created versions of CSV.
 
 - *interes_bicimad* y *interes_bicipark* are the final results of applying the modules to obtain the dataframes that the project works with.
 
+## Folder structure
+
+└── project
+    ├── __trash__
+    ├── .gitignore
+    ├── LICENSE
+    ├── README.md
+    ├── main_script.py
+    ├── notebooks
+    │   └── dev_notebook_.ipynb
+    ├── package1
+    │   ├── bicimad.py
+    │   ├── bicipark.py
+    │   ├── concat_parques_bicis.py
+    │   ├── geo_calculations.py
+    │   └── parques_jardines.py
+    └── data
+        ├── bicimad_stations.csv
+        ├── bicipark_stations.csv
+        └── results (interes_bicimad/interes_bicipark)
 
 ## Demo
 
@@ -43,8 +71,7 @@ As a result of executing this argument, you will get the complete dataframe of p
 
 When you execute these last two arguments, the project will return the nearest Bicimad/Bicipark station to the location, based on the category and location you have entered.
 
-![](https://github.com/ih_datamadpt0923_project_m1/Your_GIF_Name.gif)
-
+![gif_codigo_main](https://github.com/TeresaCardenosa/ih_datamadpt0923_project_m1/assets/140433014/e9d399c6-9d3b-4b6c-88bd-751f47f0dfd7)
 
 
 ## Optimizations 💻
@@ -56,12 +83,16 @@ Or perhaps generate a map on Google that guides you on the way?
 
 Go ahead! 
 
-![force](http://url/to/img.png)
+![force](https://github.com/TeresaCardenosa/ih_datamadpt0923_project_m1/blob/main/images/force.jpg)
+
+## Status 👀
+
+This is the module 1 project for the Data Analytics bootcamp at Ironhack.
 
 
 ## Feedback
 
-📲 If you have any feedback, feel free to contact me through LinkedIn.
+📲 If you have any feedback, feel free to contact me through [LinkedIn](https://www.linkedin.com/in/mteresacardenosadeheras/).
 
 
 ## Author
